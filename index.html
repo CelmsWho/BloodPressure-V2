@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="styles.css" />
+<script defer src="scripts.js"></script>
+<title>Blood Pressure Checker</title>
+
+</head>
+<body>
+
+<h1>Blood Pressure Checker</h1>
+<div class="container">
+  <!-- Forma: (sistoliskais/diastoliskais/pulss/vecums) -->
+  <form id="bpForm">
+    <!-- Sistoliskais-->
+    <label for="systolic">Systolic (top number) <small>(mmHg)</small></label>
+    <input type="number" id="systolic" name="systolic" placeholder="e.g., 120" min="50" max="250" required />
+    
+    <!-- Diastoliskais-->
+    <label for="diastolic">Diastolic (bottom number) <small>(mmHg)</small></label>
+    <input type="number" id="diastolic" name="diastolic" placeholder="e.g., 80" min="30" max="150" required />
+    
+    <!-- Pulss-->
+    <label for="pulse">Pulse (optional) <small>(bpm)</small></label>
+    <input type="number" id="pulse" name="pulse" placeholder="e.g., 72" min="30" max="200" />
+    
+    <!-- Vecums-->
+    <label for="age">Age (optional) <small>(years)</small></label>
+    <input type="number" id="age" name="age" placeholder="e.g., 35" min="1" max="120" />
+    
+    <!-- Pogas-->
+    <div class="btn-group">
+      <button type="submit">Calculate</button>
+      <button type="button" id="sampleBtn">Try sample (128/82)</button>
+      <button type="button" class="reset" id="resetBtn">Reset</button>
+    </div>
+  </form>
+
+  <!-- Rezultātu karte-->
+  <div id="result" class="result-card" style="display:none;">
+    <!-- Statuss-->
+    <span id="status" class="result-status"></span>
+    <div class="result-grid">
+      <!-- Klasifikācija -->
+      <div class="result-box">
+        <strong>Classification</strong>
+        <span id="classification">—</span>
+      </div>
+      <!-- MAP-->
+      <div class="result-box">
+        <strong>Mean Arterial Pressure (MAP)</strong>
+        <span id="map">— mmHg</span>
+      </div>
+      <!-- Pulsa spiediens-->
+      <div class="result-box">
+        <strong>Pulse Pressure</strong>
+        <span id="pulsePress">— mmHg</span>
+      </div>
+      <!-- Piezīmes-->
+      <div class="result-box">
+        <strong>Notes</strong>
+        <span id="notes">—</span>
+      </div>
+    </div>
+    <!-- Brīdinājuma teksts-->
+    <div id="pulseWarning" class="pulse-warning-box" style="display:none;"></div>
+    <!-- Vispārīgs brīdinājums par ārkārtēju asinsspiediena vērtību -->
+    <p class="warning" id="warning" style="display:none;">
+      ⚠️ This tool is for education only, not a diagnosis. If your systolic is ≥180 mmHg or diastolic is ≥120 mmHg, seek medical advice immediately.
+    </p>
+  </div>
+</div>
+</body>
+</html>
